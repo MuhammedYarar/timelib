@@ -1,7 +1,8 @@
 /**
+ *das Programm rechnet den Tag des Jahres aus für das jeweilige eingegebene Datum
  *
- *
- *
+ *Author: Kerem Koc und Muhammed Yarar
+ *Datum: 11.02.2020
  **/
 
 #include <stdio.h>
@@ -56,6 +57,15 @@ int get_days_for_month(int month, int year)
     return days_in_Month[month];
 }
 
+/** \brief überprüft ob das Datum richtig ist
+ *
+ * \param day
+ * \param month
+ * \param year
+ * \return 0 = false oder 1 = true
+ *
+ */
+
 int exists_date(int day, int month, int year)
 {
     if(month > 12 && month < 1 )
@@ -72,6 +82,14 @@ int exists_date(int day, int month, int year)
     }
     return 1;
 }
+/** \brief errechnet den Tag des Jahres
+ *
+ * \param day
+ * \param month
+ * \param year
+ * \return 0 = false day = anzahl der Tage
+ *
+ */
 
 int day_of_the_year(int day, int month, int year)
 {
