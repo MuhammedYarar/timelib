@@ -2,6 +2,20 @@
 #include <stdlib.h>
 
 
+void input_date(int *day, int *month, int *year)
+{
+    do {
+        printf("Bitte das Datum eingeben an dem der Tag des Jahres ausgerechnet werden soll!\n");
+        printf("Tag: ");
+        scanf("%i", day);
+        printf("Monat: ");
+        scanf("%i", month);
+        printf("Year: ");
+        scanf("%i", year);
+    } while(!exists_date(*day, *month, *year));
+
+}
+
 /** \brief is_leapyear überprüft ob der übergebene parameter ein
  *  ein Schaltjahr ist.
  * \param year
