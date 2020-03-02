@@ -8,12 +8,14 @@ void input_date(int *day, int *month, int *year)
         printf("Bitte das Datum eingeben an dem der Tag des Jahres ausgerechnet werden soll!\n");
         printf("Tag: ");
         scanf("%i", day);
+        fflush(stdin);
         printf("Monat: ");
         scanf("%i", month);
+        fflush(stdin);
         printf("Year: ");
         scanf("%i", year);
+        fflush(stdin);
     } while(!exists_date(*day, *month, *year));
-
 }
 
 /** \brief is_leapyear überprüft ob der übergebene parameter ein
