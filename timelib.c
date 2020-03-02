@@ -1,21 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "timelib.h"
 
-
-void input_date(int *day, int *month, int *year)
+void input_date(struct date *date)
 {
     do {
         printf("Bitte das Datum eingeben an dem der Tag des Jahres ausgerechnet werden soll!\n");
         printf("Tag: ");
-        scanf("%i", day);
+        scanf("%i", &(*date).day);
         fflush(stdin);
         printf("Monat: ");
-        scanf("%i", month);
+        scanf("%i", &(*date).month);
         fflush(stdin);
         printf("Year: ");
-        scanf("%i", year);
+        scanf("%i", &(*date).year);
         fflush(stdin);
-    } while(!exists_date(*day, *month, *year));
+    } while(!exists_date((*date).day, (*date).month, (*date).year));
 }
 
 /** \brief is_leapyear überprüft ob der übergebene parameter ein
@@ -94,23 +94,23 @@ int exists_date(int day, int month, int year)
 
 /** \brief errechnet den Tag des Jahres
  *
- * \param day
- * \param month
- * \param year
+ * \param date.day
+ * \param date.month
+ * \param date.year
  * \return 0 = false day = anzahl der Tage
  *
  */
 
-int day_of_the_year(int day, int month, int year)
+int day_of_the_year(struct date date)
 {
     int i = 0;
-    if(exists_date(day,month,year))
+    if(exists_date(date.day,date.month,date.year))
     {
-        for(i = 0; i < month - 1; i++)
+        for(i = 0; i < date.month - 1; i++)
         {
-            day += get_days_for_month(i,year);
+            date.day += get_days_for_month(i, date.year);
         }
-        return day;
+        return date.day;
     }
     return 0;
 }
