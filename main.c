@@ -1,8 +1,8 @@
 /**
- *das Programm rechnet den Tag des Jahres aus für das jeweilige eingegebene Datum
+ *Calculates the day of the year, which you enter using the date
  *
- *Author: Kerem Koc und Muhammed Yarar
- *Datum: 11.02.2020
+ *Author: Muhammed Yarar
+ *Date: 11.02.2020
  **/
 
 #include <stdio.h>
@@ -11,11 +11,11 @@
 
 int main()
 {
-    struct date date;
-    date.day = 0;
-    date.month = 0;
-    date.year = 0;
-    input_date(&date);
-    printf("Tag des Jahres: %i\n", day_of_the_year(date));
+    struct date date_input;
+    date_input.day = 0;
+    date_input.month = 0;
+    date_input.year = 0;
+    date_input=input_date();
+    printf("Tag des Jahres: %i\n", day_of_the_year(date_input));
     return 0;
 }

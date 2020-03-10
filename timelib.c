@@ -2,28 +2,34 @@
 #include <stdlib.h>
 #include "timelib.h"
 
-void input_date(struct date *date)
+/** \brief User enter the date
+ * \param date_input.day
+ * \param date_input.month
+ * \param date_input.year
+ * \return date_input
+ */
+
+struct date input_date()
 {
+    struct date date_input;
     do {
         printf("Bitte das Datum eingeben an dem der Tag des Jahres ausgerechnet werden soll!\n");
         printf("Tag: ");
-        scanf("%i", &(*date).day);
+        scanf("%i", &(date_input).day);
         fflush(stdin);
         printf("Monat: ");
-        scanf("%i", &(*date).month);
+        scanf("%i", &(date_input).month);
         fflush(stdin);
         printf("Year: ");
-        scanf("%i", &(*date).year);
+        scanf("%i", &(date_input).year);
         fflush(stdin);
-    } while(!exists_date((*date).day, (*date).month, (*date).year));
+    } while(!exists_date((date_input).day, (date_input).month, (date_input).year));
+    return date_input;
 }
 
-/** \brief is_leapyear überprüft ob der übergebene parameter ein
- *  ein Schaltjahr ist.
+/** \brief the function "is_leapyear" checks if the year is a leapyear
  * \param year
- *
  * \return 1 = true, 0 = false, -1 = false input
- *
  */
 
 int is_leapyear(int year)
@@ -39,12 +45,10 @@ int is_leapyear(int year)
     return -1;
 }
 
-/** \brief gibt die Tage für den Monat aus für den Monat und das Jahr
- *
+/** \brief outputs the days for the month
  * \param month
  * \param year
  * \return days_in_month or -1 if false
- *
  */
 
 int get_days_for_month(int month, int year)
@@ -66,13 +70,11 @@ int get_days_for_month(int month, int year)
     return days_in_Month[month];
 }
 
-/** \brief überprüft ob das Datum richtig ist
- *
+/** \brief checks if the date is correct
  * \param day
  * \param month
  * \param year
- * \return 0 = false oder 1 = true
- *
+ * \return 0 = false or 1 = true
  */
 
 int exists_date(int day, int month, int year)
@@ -92,25 +94,23 @@ int exists_date(int day, int month, int year)
     return 1;
 }
 
-/** \brief errechnet den Tag des Jahres
- *
- * \param date.day
- * \param date.month
- * \param date.year
- * \return 0 = false day = anzahl der Tage
- *
+/** \brief calculates the day of the year
+ * \param date_input.day
+ * \param date_input.month
+ * \param date_input.year
+ * \return 0 = false day = number of days
  */
 
-int day_of_the_year(struct date date)
+int day_of_the_year(struct date date_input)
 {
     int i = 0;
-    if(exists_date(date.day,date.month,date.year))
+    if(exists_date(date_input.day,date_input.month,date_input.year))
     {
-        for(i = 0; i < date.month - 1; i++)
+        for(i = 0; i < date_input.month - 1; i++)
         {
-            date.day += get_days_for_month(i, date.year);
+            date_input.day += get_days_for_month(i, date_input.year);
         }
-        return date.day;
+        return date_input.day;
     }
     return 0;
 }
